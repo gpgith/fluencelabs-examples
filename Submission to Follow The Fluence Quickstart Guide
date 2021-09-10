@@ -1,0 +1,15 @@
+Hi All,
+
+Very straitford, I have added the char count functionality in \2-hosted-services\src\main.rc and brought the tests up to date,
+followed all the build, test and deploy commands in Task 2 and upon completion without any error with the newly deployed
+service's ID I have updated \3-browser-to-service\aqua\getting-started.aqua, rebuilt it and started it. Unfortunately due
+to a major bug in Task 3 which I reported and was informed it is being worked on now, I could not use it to further test but will
+follow closely and do these tests to.
+Thankfully, the functionality in Task 2 can be tested independently anyway which is a very good thing.
+
+Now I shall delve into the other Fluent examples and docs.
+Congrats on the great support in Discord.
+
+Thx,
+
+Gabriel Parlea

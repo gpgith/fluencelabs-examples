@@ -21,6 +21,11 @@ module_manifest!();
 
 pub fn main() {}
 
+const STRING1: &'static str = "Hello from: \n";
+const STRING2: &'static str = " (char count: ";
+const STRING3: &'static str = " chars)";
+const STRING4: &'static str = "Hello back to you, \n";
+
 #[marine]
 pub struct HelloWorld {
     pub msg: String,
@@ -29,11 +34,17 @@ pub struct HelloWorld {
 
 #[marine]
 pub fn hello(from: String) -> HelloWorld {
+    
+    let char_count = from.chars().count();
+    let char_count1 = char_count + STRING1.chars().count();
+    let char_count2 = char_count + STRING4.chars().count();
+    
     HelloWorld {
-        msg: format!("Hello from: \n{}", from),
-        reply: format!("Hello back to you, \n{}", from),
+        msg: format!("{}{}{}{}{}", STRING1, from, STRING2, char_count1, STRING3),
+        reply: format!("{}{}{}{}{}", STRING4, from, STRING2, char_count2, STRING3),
     }
 }
+
 
 #[cfg(test)]
 mod tests {
@@ -42,12 +53,15 @@ mod tests {
     #[marine_test(config_path = "../configs/Config.toml", modules_dir = "../artifacts")]
     fn non_empty_string(hello_world: marine_test_env::hello_world::ModuleInterface) {
         let actual = hello_world.hello("SuperNode".to_string());
-        assert_eq!(actual.msg, "Hello from: \nSuperNode".to_string());
+        assert_eq!(actual.msg, "Hello from: \nSuperNode (char count: 22 chars)".to_string());
+        assert_eq!(actual.reply, "Hello back to you, \nSuperNode (char count: 29 chars)".to_string());
+        
     }
 
     #[marine_test(config_path = "../configs/Config.toml", modules_dir = "../artifacts")]
     fn empty_string(hello_world: marine_test_env::hello_world::ModuleInterface) {
         let actual = hello_world.hello("".to_string());
-        assert_eq!(actual.msg, "Hello from: \n");
+        assert_eq!(actual.msg, "Hello from: \n (char count: 13 chars)");
+        assert_eq!(actual.reply, "Hello back to you, \n (char count: 20 chars)".to_string());
     }
 }

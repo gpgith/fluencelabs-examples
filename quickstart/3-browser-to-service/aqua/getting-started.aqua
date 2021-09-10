@@ -1,7 +1,7 @@
 import "@fluencelabs/aqua-lib/builtin.aqua"
 
 const helloWorldNodePeerId ?= "12D3KooWFEwNWcHqi9rtsmDhsYcDbRUCDXH84RC4FW6UfsFWaoHi"
-const helloWorldServiceId ?= "1e740ce4-81f6-4dd4-9bed-8d86e9c2fa50"
+const helloWorldServiceId ?= "0dadfd7f-4702-4957-8b99-7138b6271619"
 
 data HelloWorld:
   msg: string
